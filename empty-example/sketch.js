@@ -1,16 +1,27 @@
 const tamanho = 10;
 let cobrinha;
+let comida;
 
 function setup() {
   createCanvas(400,400);
   cobrinha = new cobra();
   frameRate(15);
+  posiçaoComida();
   
 }
 function draw() {
   background(51);
   cobrinha.show();
   cobrinha.update();
+  posiçaoComida();
+  fill(255,0,100);
+  rect(comida.x,comida.y,tamanho,tamanho);
+}
+function posiçaoComida(){
+  var coluna = floor(width/tamanho);
+  var fila = floor(height/tamanho);
+  comida = createVector(floor(random(coluna)),floor(random(fila)));
+  comida.mult(tamanho);
 }
 
 function keyPressed(){
