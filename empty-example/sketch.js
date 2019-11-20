@@ -6,18 +6,20 @@ function setup() {
   createCanvas(400,400);
   cobrinha = new cobra();
   frameRate(15);
-  posiçaoComida();
+  posicaoComida();
   
 }
 function draw() {
   background(51);
   cobrinha.show();
   cobrinha.update();
-  posiçaoComida();
+  if(cobrinha.come(comida)){
+    posicaoComida();
+  }
   fill(255,0,100);
   rect(comida.x,comida.y,tamanho,tamanho);
 }
-function posiçaoComida(){
+function posicaoComida(){
   var coluna = floor(width/tamanho);
   var fila = floor(height/tamanho);
   comida = createVector(floor(random(coluna)),floor(random(fila)));
